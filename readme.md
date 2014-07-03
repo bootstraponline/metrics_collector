@@ -1,1 +1,1 @@
-
+A very simple metrics collector.
