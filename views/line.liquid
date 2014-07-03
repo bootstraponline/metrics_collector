@@ -1,0 +1,59 @@
+<!doctype html>
+<!-- Note:  -->
+<html>
+	<head>
+		<title>Line Chart</title>
+		<script src="js/Chart.min.js"></script>
+	</head>
+	<body>
+		<div style="width:50%">
+			<div>
+				<canvas id="canvas" height="450" width="600"></canvas>
+			</div>
+		</div>
+
+
+	<script>
+	  var white = "#fff";
+	  var red = "rgba(232, 57, 12, 1)";
+	  var redFill = "rgba(232, 57, 12, 0.1)";
+	  var blue = "rgba(0, 121, 355, 1)";
+	  var blueFill = "rgba(0, 121, 355, 0.1)";
+		var lineChartData = {
+			labels : {{ labels }},
+			datasets : [
+				{
+					label: "Red - data1",
+					fillColor : redFill,
+					strokeColor : red,
+					pointColor : red,
+					pointStrokeColor : red,
+					pointHighlightFill : white,
+					pointHighlightStroke : red,
+					data : {{ red }}
+				},
+				{
+					label: "Blue - data2",
+					fillColor : blueFill,
+					strokeColor : blue,
+					pointColor : blue,
+					pointStrokeColor : blue,
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : blue,
+					data : {{ blue }}
+				}
+			]
+
+		}
+
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			responsive: true
+		});
+	}
+
+
+	</script>
+	</body>
+</html>
