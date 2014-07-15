@@ -30,6 +30,7 @@ require_relative 'lib/capture_local'
 include MetricCollector
 
 # todo: read db from file
+# todo: fix class variable access from toplevel
 def db
   @@db ||= Db.new
 end
@@ -55,7 +56,7 @@ get '/' do
 end
 
 def secret
-  @secret ||= File.read('secret.txt').strip
+  @@secret ||= File.read('secret.txt').strip
 end
 
 post '/' do

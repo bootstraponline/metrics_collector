@@ -2,3 +2,4 @@
 *.lock
 .DS*
 secret.txt
+*.log
