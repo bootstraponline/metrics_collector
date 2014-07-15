@@ -6,7 +6,7 @@ require_relative '../lib/capture_local'
 # sample: ruby post_to_server.rb http://localhost:4567/ http://www.google.com 2
 
 def secret
-  @secret ||= File.read('../secret.txt').strip
+  File.read(File.expand_path('../../secret.txt', __FILE__)).strip
 end
 
 raise 'Must supply server, webpage url and run count' unless ARGV && ARGV.length == 3
