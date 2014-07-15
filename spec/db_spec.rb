@@ -11,10 +11,10 @@ module MetricCollector
       @db = Db.new.populate(Db.fake_data)
 
       expected      = Db.fake_data
-      @local_time   = expected.local_time.reverse
-      @local_value  = expected.local_value.reverse
-      @remote_time  = expected.remote_time.reverse
-      @remote_value = expected.remote_value.reverse
+      @local_time   = expected.local_time
+      @local_value  = expected.local_value
+      @remote_time  = expected.remote_time
+      @remote_value = expected.remote_value
     end
 
     it :select_last do
