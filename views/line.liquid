@@ -4,10 +4,29 @@
 	<head>
 		<title>Line Chart</title>
 		<script src="js/Chart.js"></script>
+		<style>
+		#title, #legend {
+		  margin: 0 auto;
+      font-family: clean, sans-serif;
+		}
+		#title {
+		  width: 0%;
+		}
+		#legend {
+		  width: 50%;
+		}
+		#data1 {
+		  color: rgba(232, 57, 12, 1); /* red */
+		}
+		#data2 {
+		  color: rgba(0, 121, 355, 1); /* blue */
+		}
+		</style>
 	</head>
 	<body>
 		<div style="width:50%">
 			<div>
+			  <h1 id="title">Title</h1>
 				<canvas id="canvas" height="450" width="600"></canvas>
 			</div>
 		</div>
@@ -21,6 +40,8 @@
 	  var blueFill = "rgba(0, 121, 355, 0.1)";
 		var lineChartData = {
 			labels : {{ labels }},
+			xAxisLabel: "The X Axis",
+			yAxisLabel: "The Y Axis",
 			datasets : [
 				{
 					label: "Red - data1",
@@ -52,8 +73,12 @@
 			responsive: true
 		});
 	}
-
-
 	</script>
+
+
+  <div id="legend">
+	<p><span id="data1">&block;</span> - dataset 1</p>
+	<p><span id="data2">&block;</span> - dataset 2</p>
+  </div>
 	</body>
 </html>

@@ -35,6 +35,8 @@ def db
   @@db ||= Db.new
 end
 
+db.populate Db.fake_data
+
 # -- sinatra methods
 
 def result_to_liquid
