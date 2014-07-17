@@ -4,38 +4,28 @@ require 'liquid'
 require 'json'
 
 =begin
-- [x] display line graph
-- [x] use liquid to display graph with data
-- [x] setup sqlite -- decided not to use an ORM
-- [ ] capture local metrics
-- [ ] capture remote metrics
-- [ ] deploy with passenger / digitalocean
-
-
-gem install rest-client
-  -- post to sinatra
-
-RestClient.post url: 'http://localhost:4567/'
-
 Every hour
   - cloudbees sends server request to app.rb
     - contains local_time / local_value
-    - app.rb aquires remote_time / remote_value
+    - app.rb acquires remote_time / remote_value
     - value is stored in the database
 =end
 
-require_relative 'lib/db'
 require_relative 'lib/capture_local'
+require_relative 'lib/config'
+require_relative 'lib/db'
 
 include MetricCollector
 
 # todo: read db from file
 # todo: fix class variable access from toplevel
+# todo: fix global var
 def db
-  @@db ||= Db.new
+  $db ||= Db.new database: 'results.db'
 end
 
-db.populate Db.fake_data
+# fake data is for testing only.
+# db.populate Db.fake_data
 
 # -- sinatra methods
 
@@ -50,20 +40,18 @@ def result_to_liquid
   local  = result.local_value.to_s
   remote = result.remote_value.to_s
 
-  liquid :line, :locals => { labels: labels, red: local, blue: remote }
+  opts = MetricCollector::Config.load
+
+  liquid :line, :locals => { labels: labels, red: local, blue: remote }.merge(opts)
 end
 
 get '/' do
   result_to_liquid
 end
 
-def secret
-  @@secret ||= File.read('secret.txt').strip
-end
-
 post '/' do
   # forbidden
-  halt 403 unless params[:secret] == secret
+  halt 403 unless params[:secret] ==  MetricCollector::Config.load['secret']
 
   remote_time  = params[:remote_time]
   remote_value = params[:remote_value]

@@ -2,12 +2,11 @@ require 'rubygems'
 require 'rest-client'
 
 require_relative '../lib/capture_local'
+require_relative '../lib/config'
 
 # sample: ruby post_to_server.rb http://localhost:4567/ http://www.google.com 2
 
-def secret
-  File.read(File.expand_path('../../secret.txt', __FILE__)).strip
-end
+secret = MetricCollector::Config.load['secret']
 
 raise 'Must supply server, webpage url and run count' unless ARGV && ARGV.length == 3
 

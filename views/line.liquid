@@ -2,17 +2,17 @@
 <!-- Note: Based on Chart.js sample https://github.com/nnnick/Chart.js/blob/master/samples/line.html -->
 <html>
 	<head>
-		<title>Line Chart</title>
-		<script src="js/Chart.js"></script>
+		<title>{{ pageTitle }}</title>
+		<script src="js/Chart.min.js"></script>
 		<style>
 		#title, #legend {
-		  margin: 0 auto;
       font-family: clean, sans-serif;
 		}
 		#title {
-		  width: 0%;
+		  text-align: center;
 		}
 		#legend {
+		  margin: 0 auto;
 		  width: 50%;
 		}
 		#data1 {
@@ -26,11 +26,10 @@
 	<body>
 		<div style="width:50%">
 			<div>
-			  <h1 id="title">Title</h1>
+			  <h1 id="title">{{ graphTitle }}</h1>
 				<canvas id="canvas" height="450" width="600"></canvas>
 			</div>
 		</div>
-
 
 	<script>
 	  var white = "#fff";
@@ -40,11 +39,11 @@
 	  var blueFill = "rgba(0, 121, 355, 0.1)";
 		var lineChartData = {
 			labels : {{ labels }},
-			xAxisLabel: "The X Axis",
-			yAxisLabel: "The Y Axis",
+			xAxisLabel: "{{ xAxisLabel }}",
+			yAxisLabel: "{{ yAxisLabel }}",
 			datasets : [
 				{
-					label: "Red - data1",
+					label: "{{ redLabel }}",
 					fillColor : redFill,
 					strokeColor : red,
 					pointColor : red,
@@ -54,7 +53,7 @@
 					data : {{ red }}
 				},
 				{
-					label: "Blue - data2",
+					label: "{{ blueLabel }}",
 					fillColor : blueFill,
 					strokeColor : blue,
 					pointColor : blue,
@@ -77,8 +76,8 @@
 
 
   <div id="legend">
-	<p><span id="data1">&block;</span> - dataset 1</p>
-	<p><span id="data2">&block;</span> - dataset 2</p>
+	<p><span id="data1">&block;</span> - {{ redLabel }}</p>
+	<p><span id="data2">&block;</span> - {{ blueLabel }}</p>
   </div>
 	</body>
 </html>
