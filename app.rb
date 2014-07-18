@@ -70,6 +70,12 @@ post '/' do
 
   complete = remote.merge(local)
 
+=begin
+phantomas records 0 on error.
+
+sqlite> delete from  http_complete_metric where remote_value == 0;
+sqlite> delete from  http_complete_metric where local_value == 0;
+=end
   # only store update if the times are > 0.
   if (local_time > 0 && remote_time > 0)
     db.insert complete
