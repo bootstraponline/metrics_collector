@@ -70,7 +70,10 @@ post '/' do
 
   complete = remote.merge(local)
 
-  db.insert complete
+  # only store update if the times are > 0.
+  if (local_time > 0 && remote_time > 0)
+    db.insert complete
+  end
 
   # return obj to client to acknowledge success
   complete.to_json
