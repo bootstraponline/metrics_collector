@@ -1,4 +1,5 @@
 require 'posix-spawn'
+require 'uri'
 
 module MetricCollector
   class CaptureLocal
@@ -21,10 +22,12 @@ $ phantomas http://www.google.com/ --runs 2
     # returns false on failure
     # returns median as float value on success
     def self.phantomas_median opts={}
-      url  = opts[:url]
-      runs = opts[:runs]
-      raise 'url must be provided' unless url
-      raise 'runs must be provided' unless runs
+      raise 'url must be provided' unless opts[:url]
+      raise 'runs must be provided' unless opts[:runs]
+      # must validate that url is a url and runs is an int
+      url  = URI(opts[:url]).to_s
+      runs = opts[:runs].to_i
+
       raise 'runs must be >= 2' unless runs.to_i >= 2
 
       child = POSIX::Spawn::Child.new('phantomas', url, '--runs', runs.to_s)

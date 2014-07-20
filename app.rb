@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'liquid'
 require 'json'
-
+require 'uri'
 =begin
 Every hour
   - cloudbees sends server request to app.rb
@@ -51,12 +51,13 @@ end
 
 post '/' do
   # forbidden
-  halt 403 unless params[:secret] ==  MetricCollector::Config.load['secret']
+  halt 403 unless params[:secret] == MetricCollector::Config.load['secret']
 
-  remote_time  = params[:remote_time]
-  remote_value = params[:remote_value]
-  url          = params[:url]
-  runs         = params[:runs]
+  # must validate all remote untrusted values
+  remote_time  = params[:remote_time].to_i
+  remote_value = params[:remote_value].to_i
+  url          = URI(params[:url]).to_s
+  runs         = params[:runs].to_i
 
   # bad request
   halt 404 unless remote_time && remote_value && url && runs
