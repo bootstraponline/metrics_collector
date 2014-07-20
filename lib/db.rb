@@ -52,12 +52,25 @@ module MetricCollector
       remote_value = opts[:remote_value]
       raise 'remote_value is required' unless remote_value
 
-      db.execute "insert into #{table_name}  (local_time, local_value, remote_time, remote_value)
-                values ( ?, ?, ?, ? )", [local_time, local_value, remote_time, remote_value]
+      # ensure all times & values are ints.
+      # nil.to_i is 0 so nil check must be done first
+
+      local_time = local_time.to_i
+      raise 'local_time must not be 0' unless local_time > 0
+      local_value = local_value.to_i
+      raise 'local_value must not be 0' unless local_value > 0
+      remote_time = remote_time.to_i
+      raise 'remote_time must not be 0' unless remote_time > 0
+      remote_value = remote_value.to_i
+      raise 'remote_value must not be 0' unless remote_value > 0
+
+      db.prepare("insert into #{table_name}  (local_time, local_value, remote_time, remote_value)
+                values ( ?, ?, ?, ? )", [local_time, local_value, remote_time, remote_value]).execute
     end
 
     # return last x ordered oldest to newest
     def select_last_as_array limit=10
+      limit = limit.to_i # ensure limit is an int
       results = db.execute("select * from #{table_name} order by id desc limit #{limit}")
       values  = OpenStruct.new(id:           [],
                                local_time:   [],
@@ -78,6 +91,7 @@ module MetricCollector
 
     # return last x ordered oldest to newest
     def select_last limit=10
+      limit = limit.to_i # ensure limit is an int
       results = db.execute("select * from #{table_name} order by id desc limit #{limit}")
       objects = []
 
@@ -92,7 +106,7 @@ module MetricCollector
       objects
     end
 
-    # Populate with data for testing
+    # Populate with data for testing (used with fake_data method)
     # using metric 'httpTrafficCompleted'
     def populate opts
       # metric 'httpTrafficCompleted'
@@ -102,6 +116,15 @@ module MetricCollector
       remote_value = opts[:remote_value]
 
       raise 'Must supply all args' unless local_time && local_value && remote_time && remote_value
+
+      local_time = local_time.to_i
+      raise 'local_time must not be 0' unless local_time > 0
+      local_value = local_value.to_i
+      raise 'local_value must not be 0' unless local_value > 0
+      remote_time = remote_time.to_i
+      raise 'remote_time must not be 0' unless remote_time > 0
+      remote_value = remote_value.to_i
+      raise 'remote_value must not be 0' unless remote_value > 0
 
       remote_time.length.times do |i|
         insert local_time:   local_time[i],
@@ -113,6 +136,7 @@ module MetricCollector
       self
     end
 
+    # Fake data object used for testing.
     def self.fake_data
       local_time   = %w[1404416999 1404413426 1404409833 1404406244 1404402656
    1404399071 1404395480 1404391888 1404388298 1404384708]
