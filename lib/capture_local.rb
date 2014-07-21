@@ -19,7 +19,7 @@ $ phantomas http://www.google.com/ --runs 2
 
     # phantomas_median url: 'http://www.google.com/', runs: 2
     #
-    # returns false on failure
+    # returns nil on failure
     # returns median as float value on success
     def self.phantomas_median opts={}
       raise 'url must be provided' unless opts[:url]
@@ -32,7 +32,7 @@ $ phantomas http://www.google.com/ --runs 2
 
       child = POSIX::Spawn::Child.new('phantomas', url, '--runs', runs.to_s)
       match = child.out.match(/httpTrafficCompleted.*$/)
-      return false unless match # match will be nil on failure to match.
+      return nil unless match # match will be nil on failure to match.
 
       match                                     = match.to_s.split('|')
       # puts match # for debugging
