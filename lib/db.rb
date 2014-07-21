@@ -44,13 +44,13 @@ module MetricCollector
 
     def insert opts={}
       local_time = opts[:local_time]
-      raise 'local_time is required' unless local_time
+      raise 'local_time is required' if local_time.nil?
       local_value = opts[:local_value]
-      raise 'local_value is required' unless local_value
+      raise 'local_value is required' if local_value.nil?
       remote_time = opts[:remote_time]
-      raise 'remote_time is required' unless remote_time
+      raise 'remote_time is required' if remote_time.nil?
       remote_value = opts[:remote_value]
-      raise 'remote_value is required' unless remote_value
+      raise 'remote_value is required' if remote_value.nil?
 
       # ensure all times & values are ints.
       # nil.to_i is 0 so nil check must be done first
