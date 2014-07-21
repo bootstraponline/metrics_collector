@@ -2,7 +2,9 @@
 require 'rubygems'
 require 'sinatra'
 
-set :environment, ENV['RACK_ENV'].to_sym
+# :development, :test, or :production
+# default is dev
+set :environment, :production
 disable :run, :reload
 
 require_relative 'app.rb'
