@@ -71,6 +71,8 @@ post '/' do
 
   complete = remote.merge(local)
 
+  puts "Inserting: #{complete}"
+
 =begin
 phantomas records 0 on error.
 
