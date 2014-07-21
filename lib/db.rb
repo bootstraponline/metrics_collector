@@ -44,13 +44,13 @@ module MetricCollector
 
     def insert opts={}
       local_time = opts[:local_time]
-      raise 'local_time is required' if local_time.nil?
+      raise 'local_time is required' unless local_time
       local_value = opts[:local_value]
-      raise 'local_value is required' if local_value.nil?
+      raise 'local_value is required' unless local_value
       remote_time = opts[:remote_time]
-      raise 'remote_time is required' if remote_time.nil?
+      raise 'remote_time is required' unless remote_time
       remote_value = opts[:remote_value]
-      raise 'remote_value is required' if remote_value.nil?
+      raise 'remote_value is required' unless remote_value
 
       # ensure all times & values are ints.
       # nil.to_i is 0 so nil check must be done first
@@ -64,8 +64,8 @@ module MetricCollector
       remote_value = remote_value.to_i
       raise 'remote_value must not be 0' unless remote_value > 0
 
-      db.prepare("insert into #{table_name}  (local_time, local_value, remote_time, remote_value)
-                values ( ?, ?, ?, ? )", [local_time, local_value, remote_time, remote_value]).execute
+      db.execute("insert into #{table_name}  (local_time, local_value, remote_time, remote_value)
+                values ( ?, ?, ?, ? )", [local_time, local_value, remote_time, remote_value])
     end
 
     # return last x ordered oldest to newest
