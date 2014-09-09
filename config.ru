@@ -4,6 +4,9 @@ require 'sinatra'
 
 # :development, :test, or :production
 # default is dev
+#
+# must export env var for passenger via bash
+# export RACK_ENV="production"
 set :environment, :production
 disable :run, :reload
 
