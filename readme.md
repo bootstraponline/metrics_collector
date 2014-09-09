@@ -11,3 +11,5 @@ blueLabel  = "blue label"
 pageTitle  = "page title"
 graphTitle = "graph title"
 ```
+
+![](example.png)
