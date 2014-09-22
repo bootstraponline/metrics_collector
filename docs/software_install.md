@@ -50,6 +50,10 @@ Install phantomas.
 
 `sudo npm install --global phantomas`
 
+phantomjs requires libfontconfig1 to be installed.
+
+`sudo apt-get install libfontconfig1`
+
 Verify phantomas works.
 
 `phantomas http://www.google.com --runs 2`
@@ -57,6 +61,10 @@ Verify phantomas works.
 If it doesn't then try [the debug command](https://github.com/macbre/phantomas/issues/403).
 
 `DEBUG=* phantomas http://www.google.com --runs 2 --verbose`
+
+When run directly, the phantomasjs binary shouldn't error.
+
+`/usr/lib/node_modules/phantomas/node_modules/phantomjs/lib/phantom/bin/phantomjs`
 
 # Starting the server with passenger
 
