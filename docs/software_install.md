@@ -49,3 +49,16 @@ Note that sudo must not be used with the bundle command.
 Install phantomas.
 
 `sudo npm install -g phantomas`
+
+# Starting the server with passenger
+
+```
+Only the 'root' user can run this program on port 80. You are currently running
+as 'myusername'. Please re-run this program with root privileges with the
+following command:
+
+  sudo passenger start --port 80 --user=myusername
+
+Don't forget the '--user' part! That will make Phusion Passenger Standalone drop
+root privileges and switch to 'myusername' after it has obtained port 80.
+```
