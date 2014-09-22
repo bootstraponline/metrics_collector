@@ -2,8 +2,8 @@
 
 Install Ruby/Node using the [phusion passenger-docker guidelines](https://github.com/phusion/passenger-docker) as shown below:
 
-Ruby is from the    [brightbox ruby-ng PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng)
-Node.JS is from the [chris-lea node.js PPA](https://launchpad.net/~chris-lea/+archive/ubuntu/node.js/)
+- Ruby is from the    [brightbox ruby-ng PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng)
+- Node.JS is from the [chris-lea node.js PPA](https://launchpad.net/~chris-lea/+archive/ubuntu/node.js/)
 
 ```
 sudo add-apt-repository ppa:brightbox/ruby-ng ;\
