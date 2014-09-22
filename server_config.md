@@ -1,4 +1,4 @@
-# Required Setup
+# Account Provisioning / Security
 
 Enable Ubuntu [automatic security updates](https://help.ubuntu.com/community/AutomaticSecurityUpdates).
 
@@ -61,6 +61,8 @@ Install fail 2 ban.
 `apt-get install fail2ban`
 
 Make sure to create a [swap file](http://www.nbrogi.me/2014/08/digital-ocean-droplet-crashing/).
+
+# Installing the Metrics Collector
 
 Install Ruby/Node using the [phusion passenger-docker guidelines](https://github.com/phusion/passenger-docker).
 
