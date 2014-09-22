@@ -54,10 +54,7 @@ service ssh restart
 ssh 1.2.3.4 -l randomUserName -p 123RandomPort321
 ```
 
-Docker/discourse requires a slightly different command with PAM disabled.
-
-Note that disabling the PAM will require a [slight change in docker access for discourse](https://meta.discourse.org/t/launcher-ssh-app-failed-due-to-pam-configuration/17317).
-use `/var/discourse$ sudo ./launcher enter app` instead of `ssh app`
+Disabling PAM requires a [slight change in docker access for discourse](https://meta.discourse.org/t/launcher-ssh-app-failed-due-to-pam-configuration/17317). Use `/var/discourse$ sudo ./launcher enter app` instead of `ssh app`
 
 Install fail 2 ban.
 
@@ -106,10 +103,9 @@ Clone the metrics collector repository
 
 `cd` into the metrics collector and install the dependencies using bundler.
 
-```
-# don't use sudo with bundle command
-bundle install
-```
+Note that sudo must not be used with the bundle command.
+
+`bundle install`
 
 Install phantomas.
 
