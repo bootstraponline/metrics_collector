@@ -18,7 +18,7 @@ randomPassword
 usermod -a -G sudo randomUserName
 ```
 
-Upload your public key to ~/.ssh 
+Upload your public key to `~/.ssh` Public keys are on github in the form of [github.com/username.keys](https://github.com/bootstraponline.keys)
 
 ```
 # example scp command
