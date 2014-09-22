@@ -11,6 +11,9 @@ Every hour
     - value is stored in the database
 =end
 
+# Force timezone
+ENV['TZ'] = 'US/Eastern'
+
 require_relative 'lib/capture_local'
 require_relative 'lib/config'
 require_relative 'lib/db'
