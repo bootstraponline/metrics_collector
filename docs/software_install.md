@@ -48,7 +48,15 @@ Note that sudo must not be used with the bundle command.
 
 Install phantomas.
 
-`npm install --global phantomas`
+`sudo npm install --global phantomas`
+
+Verify phantomas works.
+
+`phantomas http://www.google.com --runs 2`
+
+If it doesn't then try [the debug command](https://github.com/macbre/phantomas/issues/403).
+
+`DEBUG=* phantomas http://www.google.com --runs 2 --verbose`
 
 # Starting the server with passenger
 
@@ -65,3 +73,9 @@ following command:
 Don't forget the '--user' part! That will make Phusion Passenger Standalone drop
 root privileges and switch to 'myusername' after it has obtained port 80.
 ```
+
+# Stopping the server
+
+`passenger stop --port 80`
+
+Note that logs are located in `/usr/local/metrics_collector/log/`
