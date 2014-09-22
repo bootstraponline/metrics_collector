@@ -14,4 +14,4 @@ graphTitle = "graph title"
 
 ![](example.png)
 
-Deployment notes are in the [server_config.md](server_config.md)
+Deployment notes are in the [docs/ folder](docs/)
