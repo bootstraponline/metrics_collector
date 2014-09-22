@@ -1,8 +1,9 @@
 # Installing the Metrics Collector
 
-Install Ruby/Node using the [phusion passenger-docker guidelines](https://github.com/phusion/passenger-docker).
+Install Ruby/Node using the [phusion passenger-docker guidelines](https://github.com/phusion/passenger-docker) as shown below:
 
-Ruby is from the [brightbox ruby-ng PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng)
+Ruby is from the    [brightbox ruby-ng PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng)
+Node.JS is from the [chris-lea node.js PPA](https://launchpad.net/~chris-lea/+archive/ubuntu/node.js/)
 
 ```
 sudo add-apt-repository ppa:brightbox/ruby-ng ;\
@@ -15,7 +16,7 @@ sudo apt-get dist-upgrade -y ;\
 sudo apt-get install -y git build-essential
 ```
 
-Install [required headers](https://github.com/phusion/passenger-docker/blob/a85d29719ce0439305c03e51918b633ca182aca9/image/devheaders.sh) for nokogiri, sqlite, passenger
+Install [required headers](https://github.com/phusion/passenger-docker/blob/a85d29719ce0439305c03e51918b633ca182aca9/image/devheaders.sh) for nokogiri, sqlite, passenger as shown below:
 
 ```
 sudo apt-get install -y libxml2-dev libxslt1-dev libsqlite3-dev zlib1g-dev libcurl4-openssl-dev libssl-dev libpcre3-dev ;\
