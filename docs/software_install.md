@@ -52,7 +52,7 @@ Install phantomas.
 
 phantomjs requires libfontconfig1 to be installed.
 
-`sudo apt-get install libfontconfig1`
+`sudo apt-get install -y libfontconfig1`
 
 Verify phantomas works.
 
