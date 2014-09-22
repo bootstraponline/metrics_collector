@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'rest-client'
 
+# Force timezone
+ENV['TZ'] = 'US/Eastern'
+
 require_relative '../lib/capture_local'
 require_relative '../lib/config'
 
