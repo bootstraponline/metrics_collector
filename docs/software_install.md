@@ -76,6 +76,6 @@ root privileges and switch to 'myusername' after it has obtained port 80.
 
 # Stopping the server
 
-`passenger stop --port 80`
+`sudo passenger stop --port 80`
 
 Note that logs are located in `/usr/local/metrics_collector/log/`
