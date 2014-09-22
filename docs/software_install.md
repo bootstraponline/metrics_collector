@@ -48,7 +48,7 @@ Note that sudo must not be used with the bundle command.
 
 Install phantomas.
 
-`sudo npm install -g phantomas`
+`npm install --global phantomas`
 
 # Starting the server with passenger
 
