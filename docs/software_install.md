@@ -1,6 +1,6 @@
 # Installing the Metrics Collector
 
-Install Ruby/Node using the [phusion passenger-docker guidelines](https://github.com/phusion/passenger-docker) as shown below:
+Install Ruby/Node using the [phusion passenger-docker guidelines](https://github.com/phusion/passenger-docker) as shown below. Note that the metrics_colllector project doesn't currently use docker.
 
 - Ruby is from the    [brightbox ruby-ng PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng)
 - Node.JS is from the [chris-lea node.js PPA](https://launchpad.net/~chris-lea/+archive/ubuntu/node.js/)
