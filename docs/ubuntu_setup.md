@@ -54,7 +54,6 @@ service ssh restart
 ssh 1.2.3.4 -l randomUserName -p 123RandomPort321
 ```
 
-Disabling PAM requires a [slight change in docker access for discourse](https://meta.discourse.org/t/launcher-ssh-app-failed-due-to-pam-configuration/17317). Use `/var/discourse$ sudo ./launcher enter app` instead of `ssh app`
 
 Install fail 2 ban.
 
@@ -68,3 +67,9 @@ Commands for power off / reboot.
 sudo poweroff
 sudo reboot
 ```
+
+# Discourse note
+
+Random note about discourse and the above ssh config.
+
+Disabling PAM requires a [slight change in docker access for discourse](https://meta.discourse.org/t/launcher-ssh-app-failed-due-to-pam-configuration/17317). Use `/var/discourse$ sudo ./launcher enter app` instead of `ssh app`
